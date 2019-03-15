@@ -1,0 +1,43 @@
+
+<div data-hook="products_search_results_heading">
+
+
+</div>
+
+
+<%
+   paginated_products = @searcher.retrieve_products if params.key?(:keywords)
+   paginated_products ||= products
+%>
+
+<% content_for :head do %>
+    <% if paginated_products.respond_to?(:num_pages) %>
+        <%= rel_next_prev_link_tags paginated_products %>
+    <% end %>
+<% end %>
+
+
+
+
+
+<%=  render partial: "spree/shared/products_list", locals:{products: @products} %>
+
+<% if products.empty? %>
+    <div data-hook="products_search_results_heading_no_results_found" class="products-search">
+      <%= image_tag('noimage/product.png') %>
+      <h2><%=t("products.no_product1")%></h2>
+      <p><%=t("products.no_product2")%></p>
+      <%= link_to(t("home.newletter_title"), root_path(:anchor => "subscribe"), :class => 'button') %>
+    </div>
+    <div class="sticky-stopper"></div>
+
+<% end %>
+<div class="script"></div>
+
+
+
+
+
+
+
+

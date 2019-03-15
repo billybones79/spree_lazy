@@ -1,0 +1,140 @@
+
+
+@import "icons";
+@import "mixins";
+@import "variables";
+
+
+/* ---------- Infos ---------- */
+
+.single-product {
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+.product-list-item {
+  height: 300px;
+}
+.single-product .infos {
+
+  .description {
+
+    & > *:last-child { margin-bottom: 0; }
+  }
+
+  .product__comp {
+    margin:0.5rem 0;
+    font-size:0.8rem;
+  }
+
+  .custom-radio {
+    padding: 7px 0;
+    position: relative;
+
+    input {
+      display: none;
+      visibility: hidden;
+    }
+
+    label {
+      float: left;
+      width: 35px;
+      height: 35px;
+      font: 14px/35px $main_font;
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+      margin: 0 7px 0 0;
+      background: white;
+      border: 1px solid #bbb;
+
+      &:hover {
+        border-color: #404040;
+      }
+    }
+
+    &.attr-color input[type=radio] + label {
+      border-color: transparent;
+
+      &:hover { border-color: #404040; }
+    }
+
+    input[type=radio]:checked + label {
+      color: white;
+      background: #404040;
+      border-color: #404040;
+    }
+
+    a {
+      float: left;
+      color: #202020;
+      font: 600 13px/35px $main_font;
+      text-decoration: underline;
+      margin-left: 30px;
+
+      &:hover { color: $main_color; }
+    }
+  }
+
+  button:disabled {
+    opacity: 0.25;
+    &:hover {
+      background:#000000;
+      cursor: default;
+      border-color:#000000;
+    }
+  }
+}
+
+/* ---------- Misc ---------- */
+
+
+/* ---------------------------------------------------------------------------- */
+/* Tablet */
+/* ---------------------------------------------------------------------------- */
+
+@media all and (max-width: 1025px) {
+
+
+
+}
+
+@media all and (max-width: 1020px) {
+
+  .gallery .gallery_large { margin: 30px 0; }
+  .gallery #gallery_thumb { position: static; }
+  .gallery #gallery_thumb a { display: inline-block; width: 64px; margin: 0 2px 5px; }
+  .gallery #gallery_thumb a span { height: 85px; }
+  .gallery #gallery_thumb a.active:before { top: -7px; right: auto; }
+  .gallery #gallery_thumb a:before {
+    top: 0;
+    left: 50%;
+    right: auto;
+    margin: 0 0 0 -10px;
+    border: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #d3d3d3;
+  }
+}
+
+
+
+
+/* ---------------------------------------------------------------------------- */
+/* Mobile */
+/* ---------------------------------------------------------------------------- */
+
+@media all and (max-width: 600px) {
+
+  .gallery .gallery_large #gallery img { margin: 0 auto; width:70%; }
+
+  .easyzoom { display: block; }
+
+  .single-product .add-to-cart { text-align: center; }
+
+}
+
+

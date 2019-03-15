@@ -1,0 +1,35 @@
+<% cache([I18n.locale, current_currency, "single_product", product.updated_at, product.id]) do %>
+
+    <% image= defined?(kit) ? kit.image_for(product) : product.first_image.attachment.url(:large) rescue(asset_path("noimage/large.png"))%>
+    <% url = spree.product_path(product) %>
+
+    <div class="col">
+
+      <div id="product_<%= product.id %>" class="single-product <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+
+        <div class="thumb-product absolute-link" data-product-id="<%= product.id %>">
+          <%= link_to '', url, class: 'abs-link' %>
+          <% if(defined?(kit))%>
+              <img src="<%=kit.image_for(product)%>" />
+          <% else %>
+            <img height="415" width="317" class= "deferred_img" src ="<%= product.first_image.attachment.url(:mini) rescue asset_path("noimage/mini.png") %>" data-original="<%= product.first_image.attachment.url(:large) rescue asset_path("noimage/large.png") %>" />
+          <% end %>
+
+        </div>
+
+
+        <div class="meta-product">
+
+          <h3><%= link_to truncate(product.name, :length => 50), url, :class => 'info', :itemprop => "name", :title => product.name %></h3>
+
+          <div class="price">
+
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                  <span itemprop="price"><%= display_price(product) %></span>
+                </div>
+          </div>
+
+        </div>
+
+    </div>
+<% end %>

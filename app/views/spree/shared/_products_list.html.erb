@@ -1,0 +1,14 @@
+<% if products.any? %>
+  <div id="products" class="clear">
+    <div class="row">
+
+    <%= render partial: "spree/shared/products_list_infinite", locals:{products: products} %>
+    </div>
+    <div id="infinite_scroll">
+      <% if products.respond_to?(:num_pages) %>
+          <%= paginate products %>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>
