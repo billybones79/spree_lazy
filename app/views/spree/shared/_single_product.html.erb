@@ -1,4 +1,4 @@
-<% cache([I18n.locale, current_currency, "single_product", product.updated_at, product.id]) do %>
+
 
     <% image= defined?(kit) ? kit.image_for(product) : product.first_image.attachment.url(:large) rescue(asset_path("noimage/large.png"))%>
     <% url = spree.product_path(product) %>
@@ -32,4 +32,3 @@
         </div>
 
     </div>
-<% end %>
