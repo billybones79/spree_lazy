@@ -1,3 +1,18 @@
-@import 'bootstrap';
-@import "font-awesome";
-@import 'product';
+
+
+
+.product-list-item {
+    min-height: 300px;
+    position: relative;
+    width: auto;
+    h3 {
+      line-height: normal;
+    }
+    .col {
+      margin: 10px;
+    }
+    i.fa-spin {
+      min-width: 300px;
+    }
+
+}
